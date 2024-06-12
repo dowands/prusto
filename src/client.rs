@@ -196,9 +196,10 @@ impl ClientBuilder {
         let session = self.session.build()?;
         let max_attempt = self.max_attempt;
 
-        if self.auth.is_some() && session.url.scheme() == "http" {
-            return Err(Error::BasicAuthWithHttp);
-        }
+        // do not need this becoz default installion just need username without password
+        //if self.auth.is_some() && session.url.scheme() == "http" {
+        //    return Err(Error::BasicAuthWithHttp);
+        //}
 
         let mut client_builder =
             reqwest::ClientBuilder::new().timeout(session.client_request_timeout);
